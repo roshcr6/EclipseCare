@@ -1,0 +1,116 @@
+.resident-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-container {
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.resident-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.resident-table th {
+  color: var(--text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.resident-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  transition: background-color 0.2s ease;
+  animation: slideInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.resident-row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.resident-row td {
+  padding: 16px;
+  vertical-align: middle;
+}
+
+.status-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.status-icon.sleeping {
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.status-icon.active {
+  color: var(--info);
+  background: var(--info-glow);
+}
+
+.status-icon.normal {
+  color: var(--emerald-600);
+  background: var(--emerald-glow);
+}
+
+.status-icon.warning {
+  color: var(--warning);
+  background: var(--warning-glow);
+}
+
+.resident-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.resident-room {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.status-pill.sleeping {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.status-pill.active {
+  background: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.status-pill.normal {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--emerald-600);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-pill.warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}

@@ -1,0 +1,29 @@
+# Gateway + Cloud dependencies
+bleak>=0.22.0            # BLE scanning (cross-platform)
+aiohttp>=3.9.0           # Async HTTP client for cloud sync
+paho-mqtt>=2.0.0         # MQTT client for real-time data push
+fastapi>=0.115.0         # Cloud API server
+uvicorn>=0.30.0          # ASGI server
+psycopg[binary]>=3.1.0   # PostgreSQL driver
+asyncpg>=0.29.0          # Async PostgreSQL driver (high perf)
+pydantic>=2.7.0          # Data validation
+jinja2>=3.1.0            # Dashboard templating
+python-multipart>=0.0.9  # File uploads
+numpy>=1.26.0            # Signal processing
+scipy>=1.13.0            # Legacy signal processing
+aiosqlite>=0.20.0        # Async SQLite for gateway
+apscheduler>=3.10.0      # Scheduled tasks
+python-dotenv>=1.0.0     # Environment config
+structlog>=24.0.0        # Structured logging
+cryptography>=42.0.0     # Data encryption
+
+# Edge AI dependencies
+scikit-learn>=1.4.0      # Isolation Forest for vital sign anomaly detection
+tflite-runtime>=2.14.0   # TensorFlow Lite for Edge fall detection inference
+pandas>=2.2.0            # Data framing and rolling windows
+
+# Cloud Advanced Tech
+fhir.resources>=7.1.0    # FHIR Pydantic models for Epic/Cerner Facade
+openai>=1.14.0           # LLM Hybrid Rule Engine
+
+

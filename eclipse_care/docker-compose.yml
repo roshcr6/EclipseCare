@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    # Use TimescaleDB image based on Postgres 15+
+    image: timescale/timescaledb-ha:pg15-latest
+    environment:
+      POSTGRES_DB: eclipse_care
+      POSTGRES_USER: eclipse_admin
+      POSTGRES_PASSWORD: secure_dev_password_123
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/home/postgres/pgdata/data
+      - ./cloud/db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    restart: unless-stopped
+    command: >
+      -c ssl=on
+      -c ssl_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+      -c ssl_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    # Optional: configure appendonly for persistence
+    command: redis-server --appendonly yes
+
+  api:
+    build: 
+      context: .
+      dockerfile: cloud/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://eclipse_admin:secure_dev_password_123@db:5432/eclipse_care
+      - REDIS_URL=redis://redis:6379/0
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-dummy_key}
+    depends_on:
+      - db
+      - redis
+    restart: unless-stopped
+
+volumes:
+  db_data:
